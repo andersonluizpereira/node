@@ -1,0 +1,23 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "Projeto usado para o ensino de Node.Js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\" && exit 1",
+    "start": "node_modules/nodemon/bin/nodemon.js app.js"
+  },
+  "keywords": [
+    "node",
+    "ensino",
+    "JS-35",
+    "Caelum"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0"
+  }
+}
