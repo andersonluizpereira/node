@@ -1,22 +1,21 @@
+var connectionFactory = require('../infra/connectionFactory');
+var ProdutoDao = require('../infra/ProdutoDao');
+
 module.exports = function(app){
-app.get("/produtos",function(req,res){
-  var mysql = require('mysql');
+app.get('/produtos',function(req,res){
+ 
+ var connection = connectionFactory();
+ var produtoDao = new ProdutoDao(connection);
 
-  var connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'caelum',
-    database:'casadocodigo'
-  });
-
-  connection.query('select * from livros', 
-  
-  function(err,result,fields){
-   res.render('produtos/lista',{lista:result});
- // res.send(result);
-}
-);
-connection.end();
-   
+//  connection.query('select * from livros', 
+//       function(req,result,fields){
+//          res.render('produtos/lista',{lista:result});
+//    }
+//   );
+produtoDao.lista(function(error,results,fields){
+  res.render('produtos/lista',{lista:results});
 });
-};
+  connection.end();
+   
+  });
+}
