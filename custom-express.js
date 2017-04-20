@@ -1,16 +1,17 @@
 require('dotenv').config()
-var  express = require('express');
-var expressValidator = require('express-validator')
-var app = express();
-var bodyParser = require('body-parser');
+const express = require('express')
+const expressValidator = require('express-validator')
+const bodyParser = require('body-parser')
+const io = require('socket.io')
+const app = express()
 
-module.exports = function() {
-  
+app.set('view engine', 'ejs')
+app.set('io', io)
 app.use(express.static('./public'))
-app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
 app.use(expressValidator())
-require('./routes/produtos')(app);
-return app;
-};
+
+require('./rotas')(app)
+
+module.exports = app

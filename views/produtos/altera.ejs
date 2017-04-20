@@ -2,30 +2,32 @@
 
 <div>
     <div class ="container min-container">
-        <h2 class="basic-title">Add</h2>
-
+        <h2 class="basic-title">Edit</h2>
+   <% livros.map(function(livro) { %>
+        <!--<form action="/produtos/<%= livro.id %>?_method=PUT" method="post" class="well" role="form">-->
         <form action="/produtos" method="post" class="well" role="form">
+                    <input type="hidden" name="id" value="<%= livro.id %>"/>
             <div class="form-group">
-                <input type="hidden" name="id" value="0"/>
                 <label for="titulo">Titulo</label>
                 <div class="input-group">
-                    <input type="text" name="titulo" placeholder="titulo do livro"/>
+                    <input type="text" name="titulo" value="<%= livro.titulo %>"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="preco">Preço</label>
                 <div class="input-group">
-                    <input type="text" name="preco" placeholder="valor do livro"/>
+                    <input type="text" name="preco" value="<%= livro.preco %>"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="descricao">Descricao</label>
                 <div class="input-group">
-                    <textarea name="descricao"></textarea>
+                    <input type="text" name="descricao" value="<%= livro.descricao %>" />
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Gravar</button>
         </form>
+          <% }) %>
     </div>
 </div>
 
