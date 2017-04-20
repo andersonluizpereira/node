@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha --recursive",
-    "start": "node_modules/nodemon/bin/nodemon.js app.js && test"
+    "start": "node_modules/nodemon/bin/nodemon.js app.js"
   },
   "keywords": [
     "node",

@@ -2,6 +2,10 @@ function ProdutoDao(connection){
   this._connection = connection;
 }
 
+ProdutoDao.prototype.delete = function (id,callback){
+  this._connection.query('delete from livros where id ='+id,callback);
+};
+
 ProdutoDao.prototype.busca = function (id,callback){
   this._connection.query('select * from livros where id ='+id,callback);
 };
