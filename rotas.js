@@ -1,5 +1,6 @@
 const ProdutoController =  require('./controller/ProdutoController')
 const IndexController = require('./controller/IndexController')
+const PromocoesController = require('./controller/PromocoesController')
 
 
 module.exports = function (app) {
@@ -11,5 +12,7 @@ module.exports = function (app) {
   app.post('/produtos', ProdutoController.salva)
   app.put('/produtos', ProdutoController.alterar)
   app.get('/produtos/form', ProdutoController.form)
+  app.get('/promocoes/form', PromocoesController.form)
+  app.post('/promocoes', PromocoesController.salvaEDispara.bind(this, app))
 
 }

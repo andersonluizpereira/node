@@ -18,13 +18,8 @@ exclui(req, res) {
     let produtoDao =  Connection()
     let salvo = req.query.salvo
     let id =  req.params.id
-  //  console.log(req.params.id)
-
-    produtoDao.exclui(id,function(err,result, fields) {
-      
-     // var livro = {livros : result}
-     // console.log(livro)
-      
+   produtoDao.exclui(id,function(err,result, fields) {
+     
       res.format({
         html : () => {
            res.redirect('/produtos?salvo=true')
@@ -34,22 +29,17 @@ exclui(req, res) {
         }
       })
 
-
     })
-
-    
+  
   }
 
 edita(req, res) {
    let produtoDao =  Connection()
     let salvo = req.query.salvo
     let id =  req.params.id
-  //  console.log(req.params.id)
-
     produtoDao.edita(id,function(err,result, fields) {
       
       var livro = {livros : result}
-     // console.log(livro)
       
       res.format({
         html : () => {
@@ -69,8 +59,6 @@ detalhe(req, res) {
     let produtoDao =  Connection()
     let salvo = req.query.salvo
     let id =  req.params.id
- //   console.log(req.params.id)
-
     produtoDao.detalhe(id,function(err,result, fields) {
       
       var livro = {livros : result}
@@ -85,7 +73,6 @@ detalhe(req, res) {
         }
       })
     })
-
     
   }
 
@@ -113,7 +100,6 @@ detalhe(req, res) {
     let produtoDao =  Connection()
     let livro = req.body
     let err = false
-   console.log(livro)
    
     req.assert('titulo', 'Título deve ser preenchido').notEmpty()
     err = req.validationErrors()
@@ -140,21 +126,12 @@ detalhe(req, res) {
 
 alterar(req, res) {
 
-    let id =  req.params.id
-    console.log(req.params.id)
-     console.log(id)
     let produtoDao =  Connection()
     let livro = req.body
     let err = false
 
-    console.log(livro)
-
     req.assert('titulo', 'Título deve ser preenchido').notEmpty()
     err = req.validationErrors()
-
-    // if (err) {
-    //   res.render('produtos/form', {validationErrors : err})
-    // }
 
     produtoDao.alterar(livro, function(err, result, fields) {
       res.redirect('/produtos')
