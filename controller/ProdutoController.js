@@ -1,6 +1,13 @@
 const connectionFactory = require('../infra/connectionFactory')
 const ProdutoDao = require('../dao/ProdutoDao')
 
+function Connection(){
+     let connection = connectionFactory()
+     let produtoDao = new ProdutoDao(connection)
+    return produtoDao
+}
+
+ 
 class ProdutoController {
   constructor() {
     console.log('Funfou');
@@ -8,8 +15,7 @@ class ProdutoController {
 
 
 exclui(req, res) {
-    let connection = connectionFactory()
-    let produtoDao = new ProdutoDao(connection)
+    let produtoDao =  Connection()
     let salvo = req.query.salvo
     let id =  req.params.id
   //  console.log(req.params.id)
@@ -31,12 +37,11 @@ exclui(req, res) {
 
     })
 
-    connection.end()
+    
   }
 
 edita(req, res) {
-    let connection = connectionFactory()
-    let produtoDao = new ProdutoDao(connection)
+   let produtoDao =  Connection()
     let salvo = req.query.salvo
     let id =  req.params.id
   //  console.log(req.params.id)
@@ -56,13 +61,12 @@ edita(req, res) {
       })
     })
 
-    connection.end()
+    
   }
 
 
 detalhe(req, res) {
-    let connection = connectionFactory()
-    let produtoDao = new ProdutoDao(connection)
+    let produtoDao =  Connection()
     let salvo = req.query.salvo
     let id =  req.params.id
  //   console.log(req.params.id)
@@ -82,13 +86,14 @@ detalhe(req, res) {
       })
     })
 
-    connection.end()
+    
   }
 
+
+
   listaTodos(req, res) {
-    console.log('AE');
-    let connection = connectionFactory()
-    let produtoDao = new ProdutoDao(connection)
+    
+    let produtoDao =  Connection()
     let salvo = req.query.salvo
 
     produtoDao.listaTodos(function(err, result, fields) {
@@ -101,14 +106,11 @@ detalhe(req, res) {
         }
       })
     })
-
-    connection.end()
+    
   }
 
   salva(req, res) {
-    
-    let connection = connectionFactory()
-    let produtoDao = new ProdutoDao(connection)
+    let produtoDao =  Connection()
     let livro = req.body
     let err = false
    console.log(livro)
@@ -141,8 +143,7 @@ alterar(req, res) {
     let id =  req.params.id
     console.log(req.params.id)
      console.log(id)
-    let connection = connectionFactory()
-    let produtoDao = new ProdutoDao(connection)
+    let produtoDao =  Connection()
     let livro = req.body
     let err = false
 

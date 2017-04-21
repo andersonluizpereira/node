@@ -1,7 +1,7 @@
-var express = require('../../custom-express')();
+var express = require('../../custom-express');
 var request = require('supertest')(express);
 
-describe('#ProdutosController', function() {
+describe('#ProdutoController', function() {
    it('#listagem de produtos json', function(done){
       request.get('/produtos')
       .set('Accept','application/json')
