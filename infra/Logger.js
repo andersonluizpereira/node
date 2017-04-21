@@ -2,7 +2,7 @@ let logger = null
 class Logger{
   constructor(){
       if(!logger){
-          logger=this
+          logger=this.logger
       }
   }  
 
