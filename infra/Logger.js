@@ -6,8 +6,6 @@ class Logger{
       }
   }  
 
-
-
 formatTag(tag){
 return  `[${tag}]`
 
